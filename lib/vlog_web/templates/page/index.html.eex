@@ -1,0 +1,34 @@
+<button id="login">login</button>
+<button id="url_protegida">url protegida</button>
+
+<script>
+    document.getElementById('login').addEventListener('click', function() {
+        fetch('api/signin', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: 'user@example.com',
+                    password: 'clave'
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(response => console.log('Success:', response))
+            .catch(error => console.error('Error:', error))
+
+    });
+
+    document.getElementById('url_protegida').addEventListener('click', function() {
+        fetch('api/v1/urlprotegida', {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(response => console.log('Success:', response))
+            .catch(error => console.error('Error:', error))
+
+    });
+</script>
